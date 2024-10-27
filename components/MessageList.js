@@ -30,7 +30,7 @@ export default function MessageList({ messages }) {
           {message.isUser && (
             <FaUserCircle className="text-indigo-500 w-10 h-10 mr-4" />
           )}
-          <div className={`${message.isUser ? 'bg-indigo-600 text-white' : 'bg-white text-gray-900'} rounded-lg px-6 py-4 max-w-md shadow-md`}>
+          <div className={`${message.isUser ? 'bg-indigo-600 text-white' : 'bg-white text-gray-900'} rounded-lg px-2 py-4 max-w-md shadow-md`}>
             {message.isUser ? (
               <ReactMarkdown className="prose prose-sm">
                 {message.text}
