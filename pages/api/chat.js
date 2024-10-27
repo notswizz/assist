@@ -12,11 +12,10 @@ export default async function handler(req, res) {
 
       console.log('Received queryType in chat.js:', queryType); // Debugging log
 
-      // Optionally fetch data from MongoDB using the deployed API
+      // Fetch all data from MongoDB using the deployed API
       let fetchedData = '';
-      if (queryType) {
-        console.log('Fetching data for queryType:', queryType);
-        const fetchResponse = await fetch(`https://assist-five.vercel.app/api/fetchData?queryType=${queryType}`, {
+      try {
+        const fetchResponse = await fetch(`https://assist-five.vercel.app/api/fetchData`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
         });
@@ -28,6 +27,8 @@ export default async function handler(req, res) {
         } else {
           console.error('Failed to fetch data from MongoDB');
         }
+      } catch (fetchError) {
+        console.error('Error fetching data:', fetchError);
       }
 
       // Log conversation insights
